@@ -1,0 +1,20 @@
+# docker-compose.yml
+
+# docker-composeのオプションを代わりにここにかく
+# コマンドはdocker-compose up -d --build。./build.shで実行する。
+# docker-compose...dockerイメージの作成。
+# dオプション...バックグラウンドでコンテナをはしらせる。
+# --build...コンテナをbuildする初回起動時に必要。
+
+version: '3'
+services:
+  python3:
+    restart: always
+    build: .
+    container_name: 'python3'
+    working_dir: '/root/'
+    tty: true
+    # 自分の端末と仮想環境で動悸するフォルダを指定
+    # 自分のフォルダ:仮想環境のフォルダ で指定する。
+    volumes:
+        - ./work:/root/work
