@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+################################################################################
 # run.sh は pythonファイルを実行します。
 # dockerコンテナを立ち上げて実行しますが、実行後すぐに破棄されるので意識する必要はありません。
 #
@@ -10,29 +11,17 @@
 #   -f ファイル名を指定
 #   -h ヘルプを表示
 #   -v バージョンを表示
-#
+################################################################################
 # Version:
 #   0.0.1
+################################################################################
 
-
-# ヘッダの長さを取得する
-function count_header_length() {
-  count_header_length=0
-  while read line; do
-    if [[ $line =~ ^'#' ]]; then
-      count_header_length=$(( count_header_length + 1 ))
-    else
-      break
-    fi
-  done < $0
-  return $count_header_length
-}
 
 # usage() 使い方を表示する
 function usage() {
   # usageはヘッダコメントから取得する.
-  pattern='NR >= 2'
-  action='{if (/^#/) { sub("^# ?", ""); print } else { exit }}'
+  pattern='NR >= 4'
+  action='{if (/^#/) { if (/^##########/) { exit } else {sub("^# ?", ""); print }} else { exit }}'
   awk "$pattern $action" $0
   return 0
 }
@@ -60,7 +49,7 @@ function run_file() {
     --rm \
     --name "$filename_stem"_maked_runsh \
     --volume "$PWD":/usr/src/"$filename_stem" \
-    --workdir /usr/src/"$filename_stem" python:3 python "$filename"
+    --workdir /usr/src/"$filename_stem" python:3 python "$filename" # python2を利用したい場合、python:2とする
   return 0
 }
 
