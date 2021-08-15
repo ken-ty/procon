@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# run.sh は dockerコンテナでpythonファイルを実行します。
+# run.sh は pythonファイルを実行します。
+# dockerコンテナを立ち上げて実行しますが、実行後すぐに破棄されるので意識する必要はありません。
 #
-# Usage: ./run.sh -f python-file
+# Usage: ./run.sh -f filename
 # Usage: ./run.sh [option]
 #
 # Options:
