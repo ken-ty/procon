@@ -1,28 +1,28 @@
 #!/bin/bash
 #
-# Run PYTHON_SCRIPT on python3 container
+# run.sh は dockerコンテナでpythonファイルを実行します。
 #
-# Usage:
-#   ./run.sh -f filename [-h] [-v]
+# Usage: ./run.sh -f python-file
+# Usage: ./run.sh [option]
+#
 # Options:
-#   -h Display help
-#   -v Display version
-#   -f [filename] run python script use python container
-# Examples:
-#   ./run.sh -f sample.py
+#   -f ファイル名を指定
+#   -h ヘルプを表示
+#   -v バージョンを表示
+#
 # Version:
 #   0.0.1
-#
+
 
 # TODO: 実装
 # ヘッダの長さを取得する
 function count_header_length() {
-  echo "hoge"
+  echo "ヘッダの長さを取得する"
 }
 
 # usage() 使い方を表示する
 function usage() {
-  # usageはヘッダコメントに書く.
+  # usageはヘッダコメントから取得する.
   pattern='NR >= 2'
   action='{if (/^#/) { sub("^# ?", ""); print } else { exit }}'
   awk "$pattern $action" $0
@@ -35,18 +35,21 @@ function version() {
   awk "$pattern $action" $0
 }
 
-# pythonファイルをコンテナで実行する
+# file_run() pythonファイルをコンテナで実行する
 function file_run() {
-    # -v, --volume=[ホスト側ディレクトリ:]コンテナ側ディレクトリ
-    # -w, --workdir=コンテナ内の作業用ディレクトリ
-    filename=$1
-    docker run \
-        --interactive \
-        --tty \
-        --rm \
-        --name "$filename"_run \
-        --volume "$PWD":/usr/src/myapp \
-        --workdir /usr/src/myapp python:3 python "$filename"
+  # 公式に従ってdockerコマンドを叩きます
+  # https://hub.docker.com/_/python/?tab=description
+  # オプションメモ:
+  # --volume=[ホスト側ディレクトリ:]コンテナ側ディレクトリ
+  # --workdir=コンテナ内の作業用ディレクトリ
+  filename=$1
+  docker run \
+    --interactive \
+    --tty \
+    --rm \
+    --name "$filename"_run \
+    --volume "$PWD":/usr/src/myapp \
+    --workdir /usr/src/myapp python:3 python "$filename"
 }
 
 allow_options="cf:hv"
