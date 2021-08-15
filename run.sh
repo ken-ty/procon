@@ -25,7 +25,6 @@ function count_header_length() {
       break
     fi
   done < $0
-
   return $count_header_length
 }
 
@@ -35,6 +34,7 @@ function usage() {
   pattern='NR >= 2'
   action='{if (/^#/) { sub("^# ?", ""); print } else { exit }}'
   awk "$pattern $action" $0
+  return 0
 }
 
 # version() バージョンを表示する
@@ -42,10 +42,11 @@ function version() {
   pattern=''
   action='{if (/^# Version:/) { getline; sub("^#   ?", ""); print } }'
   awk "$pattern $action" $0
+  return 0
 }
 
 # file_run() pythonファイルをコンテナで実行する
-function file_run() {
+function run_file() {
   # 公式に従ってdockerコマンドを叩きます
   # https://hub.docker.com/_/python/?tab=description
   # オプションメモ:
@@ -60,16 +61,15 @@ function file_run() {
     --name "$filename_stem"_maked_runsh \
     --volume "$PWD":/usr/src/"$filename_stem" \
     --workdir /usr/src/"$filename_stem" python:3 python "$filename"
-
   return 0
 }
 
 readonly ALLOW_OPTIONS="cf:hv"
 while getopts $ALLOW_OPTIONS option; do
   case $option in
-    f  ) file_run $OPTARG    ;; # ファイルの実行
-    v  ) version   ;; # バージョンを出力
-    h  ) usage     ;; # ヘルプを出力
-    \? ) usage >&2 ;; # 上記以外のオプションの場合、標準エラーでヘルプを出力
+    f  ) run_file $OPTARG ;; # ファイルの実行
+    v  ) version          ;; # バージョンを出力
+    h  ) usage            ;; # ヘルプを出力
+    \? ) usage >&2        ;; # 上記以外のオプションの場合、標準エラーでヘルプを出力
   esac
 done
