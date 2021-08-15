@@ -43,13 +43,14 @@ function file_run() {
   # --volume=[ホスト側ディレクトリ:]コンテナ側ディレクトリ
   # --workdir=コンテナ内の作業用ディレクトリ
   filename=$1
+  filename_stem=$(basename $filename ".py") # 拡張子抜きのfilename
   docker run \
     --interactive \
     --tty \
     --rm \
-    --name "$filename"_run \
-    --volume "$PWD":/usr/src/myapp \
-    --workdir /usr/src/myapp python:3 python "$filename"
+    --name "$filename_stem"_maked_runsh \
+    --volume "$PWD":/usr/src/"$filename_stem" \
+    --workdir /usr/src/"$filename_stem" python:3 python "$filename"
 }
 
 allow_options="cf:hv"
