@@ -2,7 +2,7 @@
 
 """
 以下コマンドで実行。
-./run.sh sample.py
+./run.sh -f sample.py
 """
 
 print("hello python")
