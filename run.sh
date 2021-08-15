@@ -36,12 +36,10 @@ function version() {
 }
 
 # pythonファイルをコンテナで実行する
-# TODO: ファイル名を受け付ける(現在はsample.py固定)
 function file_run() {
     # -v, --volume=[ホスト側ディレクトリ:]コンテナ側ディレクトリ
     # -w, --workdir=コンテナ内の作業用ディレクトリ
     filename=$1
-    echo $1
     docker run \
         --interactive \
         --tty \
