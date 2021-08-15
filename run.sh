@@ -40,20 +40,22 @@ function version() {
 function file_run() {
     # -v, --volume=[ホスト側ディレクトリ:]コンテナ側ディレクトリ
     # -w, --workdir=コンテナ内の作業用ディレクトリ
+    filename=$1
+    echo $1
     docker run \
         --interactive \
         --tty \
         --rm \
-        --name python3_run \
+        --name "$filename"_run \
         --volume "$PWD":/usr/src/myapp \
-        --workdir /usr/src/myapp python:3 python sample.py
+        --workdir /usr/src/myapp python:3 python "$filename"
 }
 
-allow_options="cfhv"
+allow_options="cf:hv"
 while getopts $allow_options option; do
   case $option in
     c  ) count_header_length ;; #TODO: デバッグ中
-    f  ) file_run  ;; # ファイルの実行
+    f  ) file_run $OPTARG    ;; # ファイルの実行
     v  ) version   ;; # バージョンを出力
     h  ) usage     ;; # ヘルプを出力
     \? ) usage >&2 ;; # 上記以外のオプションの場合、標準エラーでヘルプを出力
