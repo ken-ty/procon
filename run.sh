@@ -15,10 +15,18 @@
 #   0.0.1
 
 
-# TODO: 実装
 # ヘッダの長さを取得する
 function count_header_length() {
-  echo "ヘッダの長さを取得する"
+  count_header_length=0
+  while read line; do
+    if [[ $line =~ ^'#' ]]; then
+      count_header_length=$(( count_header_length + 1 ))
+    else
+      break
+    fi
+  done < $0
+
+  return $count_header_length
 }
 
 # usage() 使い方を表示する
@@ -52,12 +60,13 @@ function file_run() {
     --name "$filename_stem"_maked_runsh \
     --volume "$PWD":/usr/src/"$filename_stem" \
     --workdir /usr/src/"$filename_stem" python:3 python "$filename"
+
+  return 0
 }
 
-allow_options="cf:hv"
-while getopts $allow_options option; do
+readonly ALLOW_OPTIONS="cf:hv"
+while getopts $ALLOW_OPTIONS option; do
   case $option in
-    c  ) count_header_length ;; #TODO: デバッグ中
     f  ) file_run $OPTARG    ;; # ファイルの実行
     v  ) version   ;; # バージョンを出力
     h  ) usage     ;; # ヘルプを出力
