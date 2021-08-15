@@ -49,12 +49,13 @@ function file_run() {
         --workdir /usr/src/myapp python:3 python sample.py
 }
 
-while getopts cfhv option; do
+allow_options="cfhv"
+while getopts $allow_options option; do
   case $option in
-    c  ) count_header_length ;;
-    f  ) file_run ;;
-    v  ) version  ;;
-    h  ) usage    ;;
-    \? ) usage >&2   ;;
+    c  ) count_header_length ;; #TODO: デバッグ中
+    f  ) file_run  ;; # ファイルの実行
+    v  ) version   ;; # バージョンを出力
+    h  ) usage     ;; # ヘルプを出力
+    \? ) usage >&2 ;; # 上記以外のオプションの場合、標準エラーでヘルプを出力
   esac
 done
