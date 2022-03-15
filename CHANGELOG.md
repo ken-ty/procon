@@ -23,6 +23,6 @@
 ### Added
 - procon: python3 スクリプトをコンテナで実行する `run.sh` を追加
 
-[Unreleased]: https://github.com/ken-ty/procon/compare/v0.0.2...HEAD?w=1
+[Unreleased]: https://github.com/ken-ty/procon/compare/v0.0.3...HEAD?w=1
 [0.0.3]: https://github.com/ken-ty/procon/compare/v0.0.2...v0.0.3?w=1
 [0.0.2]: https://github.com/ken-ty/procon/compare/v0.0.1...v0.0.2?w=1
