@@ -1,6 +1,6 @@
 {
   "name": "procon",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "procon は プログラミングコンテストの解答環境です。",
   "main": "index.js",
   "directories": {
