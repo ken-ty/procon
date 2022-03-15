@@ -75,7 +75,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 
     うまくいったようです！実行終了したコンテナは既に破棄されているので、環境はクリーンな状態を保っています。
 
-4. testを自動化しましょう！ 入力ファイル( 1.in, 2.in ), 出力ファイル( 1.out, 2.out )を準備します。
+4. [追加予定]testを自動化しましょう！ 入力ファイル( 1.in, 2.in ), 出力ファイル( 1.out, 2.out )を準備します。3.in, 3.out は今回使いませんので、消してください。
     // TODO: 入出力ファイルの命名規則を書く。
 
     1.in
@@ -90,19 +90,19 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     6 test
     ```
 
-    2.in ( 作成します )
+    2.in
     ```
     72
     128 256
     myonmyon
     ```
 
-    2.out ( 作成します )
+    2.out
     ```
     456 myonmyon
     ```
 
-5. 以下コマンドでテストが走ります。
+5. [追加予定]以下コマンドでテストが走ります。
 
     ```
     $npm run test welcome-to-atcoder
@@ -114,6 +114,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 ## 環境構築
 
 | name | version | description |
+| --- | --- | --- |
 | OS | Ubuntu 20.04.2 LTS | 動作確認したOSです, macOS確認中 |
 | docker | version | TODO: versionかくにんする, macOSだとdocker起動してないとエラー |
 | node | 未確認 | インストールしてね。 TODO: .nvmrc作る |
