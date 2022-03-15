@@ -63,10 +63,10 @@ function make_work_directories {
 readonly ALLOW_OPTIONS=":cf:hu:v" # 先頭の:でOPTARGを任意にした
 while getopts $ALLOW_OPTIONS option; do
   case $option in
-    :  ) make_work_directories ;;             # 解答環境を作成
-    f  ) make_work_directories $OPTARG     ;; # 引数で指定した名前の解答環境を作成
-    v  ) version               ;;             # バージョンを出力
-    h  ) usage                 ;;             # ヘルプを出力
-    \? ) usage >&2             ;;             # 上記以外のオプションの場合、標準エラーでヘルプを出力
+    :  ) make_work_directories         ;; # 解答環境を作成
+    f  ) make_work_directories $OPTARG ;; # 引数で指定した名前の解答環境を作成
+    v  ) version                       ;; # バージョンを出力
+    h  ) usage                         ;; # ヘルプを出力
+    \? ) usage >&2                     ;; # 上記以外のオプションの場合、標準エラーでヘルプを出力
   esac
 done
