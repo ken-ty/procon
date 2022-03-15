@@ -3,7 +3,7 @@
 procon は プログラミングコンテストの解答環境です。
 
 * **クリーン:** ローカル端末を汚しません。
-* **自動テスト(追加予定):** 入出力を比較し、異なるなら差分を比較できます。(予定)
+* **[追加予定]自動テスト:** 入出力を比較し、異なるなら差分を比較できます。
 
 ## Installation
 
@@ -19,28 +19,19 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     すると、解答環境が作成されます。作成されたディレクトリの構成を確認します。
 
     ```
-    $tree welcome-to-atcoder
-    .
-    ├── welcome-to-atcoder.py    # このファイルに解答する
-    └── test
-        ├── 1.in                 # このファイルに入力をコピペする
-        └── 1.out                # このファイルに期待する出力をコピペする
+    $tree welcome-to-atcoder/
+    welcome-to-atcoder/
+    ├── test
+    │   ├── 1.in                 # このファイルに入力をコピペする
+    │   ├── 1.out                # このファイルに期待する出力をコピペする
+    │   ├── 2.in
+    │   ├── 2.out
+    │   ├── 3.in
+    │   └── 3.out
+    └── welcome-to-atcoder.py     # このファイルに解答する
     ```
 
-1. 解答しましょう！ welcome-to-actor.py を好きなエディターで開いて下さい。初期は以下のようになっています。
-
-    ```
-    #!/usr/bin/python3
-
-    """
-    以下コマンドで実行。
-    ./run.sh -f sample.py
-    """
-
-    print("hello python")
-    ```
-
-    これを、解答ファイルで上書きします。
+1. 解答しましょう！  welcome-to-atcoder/welcome-to-atcoder.py を好きなエディターで開いて下さい。解答スクリプトを記述します。
 
     ```
     # -*- coding: utf-8 -*-
@@ -60,7 +51,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     $npm run start welcome-to-atcoder/welcome-to-atcoder.py
     ```
 
-    実行するとコンテナが起動し、 コンテナ内で welcome-to-atcoder.py が実行されます。入力待ちになっています。いかをターミナルに貼りましょう。
+    実行するとコンテナが起動し、 コンテナ内で welcome-to-atcoder.py が実行されます。入力待ちになっています。以下をターミナルに貼りましょう。
 
     貼る内容:
     ```
@@ -72,11 +63,14 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     結果:
     ```
     $npm run start welcome-to-atcoder/welcome-to-atcoder.py
+
+    > procon@0.0.3 start
+    > ./src/run.sh -f "welcome-to-atcoder/welcome-to-atcoder.py"
+
     1
     2 3
     test
-    6
-    test
+    6 test
     ```
 
     うまくいったようです！実行終了したコンテナは既に破棄されているので、環境はクリーンな状態を保っています。
@@ -93,8 +87,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 
     1.out
     ```
-    6
-    test
+    6 test
     ```
 
     2.in ( 作成します )
