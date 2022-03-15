@@ -3,7 +3,7 @@
 procon は プログラミングコンテストの解答環境です。
 
 * **クリーン:** ローカル端末を汚しません。
-* **自動テスト(追加予定):** 入出力を比較し、異なるなら差分を比較できます。(予定)
+* **[追加予定]自動テスト:** 入出力を比較し、異なるなら差分を比較できます。
 
 ## Installation
 
@@ -19,28 +19,19 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     すると、解答環境が作成されます。作成されたディレクトリの構成を確認します。
 
     ```
-    $tree welcome-to-atcoder
-    .
-    ├── welcome-to-atcoder.py    # このファイルに解答する
-    └── test
-        ├── 1.in                 # このファイルに入力をコピペする
-        └── 1.out                # このファイルに期待する出力をコピペする
+    $tree welcome-to-atcoder/
+    welcome-to-atcoder/
+    ├── test
+    │   ├── 1.in                 # このファイルに入力をコピペする
+    │   ├── 1.out                # このファイルに期待する出力をコピペする
+    │   ├── 2.in
+    │   ├── 2.out
+    │   ├── 3.in
+    │   └── 3.out
+    └── welcome-to-atcoder.py     # このファイルに解答する
     ```
 
-1. 解答しましょう！ welcome-to-actor.py を好きなエディターで開いて下さい。初期は以下のようになっています。
-
-    ```
-    #!/usr/bin/python3
-
-    """
-    以下コマンドで実行。
-    ./run.sh -f sample.py
-    """
-
-    print("hello python")
-    ```
-
-    これを、解答ファイルで上書きします。
+1. 解答しましょう！  welcome-to-atcoder/welcome-to-atcoder.py を好きなエディターで開いて下さい。解答スクリプトを記述します。
 
     ```
     # -*- coding: utf-8 -*-
@@ -60,7 +51,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     $npm run start welcome-to-atcoder/welcome-to-atcoder.py
     ```
 
-    実行するとコンテナが起動し、 コンテナ内で welcome-to-atcoder.py が実行されます。入力待ちになっています。いかをターミナルに貼りましょう。
+    実行するとコンテナが起動し、 コンテナ内で welcome-to-atcoder.py が実行されます。入力待ちになっています。以下をターミナルに貼りましょう。
 
     貼る内容:
     ```
@@ -72,16 +63,19 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     結果:
     ```
     $npm run start welcome-to-atcoder/welcome-to-atcoder.py
+
+    > procon@0.0.3 start
+    > ./src/run.sh -f "welcome-to-atcoder/welcome-to-atcoder.py"
+
     1
     2 3
     test
-    6
-    test
+    6 test
     ```
 
     うまくいったようです！実行終了したコンテナは既に破棄されているので、環境はクリーンな状態を保っています。
 
-4. testを自動化しましょう！ 入力ファイル( 1.in, 2.in ), 出力ファイル( 1.out, 2.out )を準備します。
+4. [追加予定]testを自動化しましょう！ 入力ファイル( 1.in, 2.in ), 出力ファイル( 1.out, 2.out )を準備します。3.in, 3.out は今回使いませんので、消してください。
     // TODO: 入出力ファイルの命名規則を書く。
 
     1.in
@@ -93,23 +87,22 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 
     1.out
     ```
-    6
-    test
+    6 test
     ```
 
-    2.in ( 作成します )
+    2.in
     ```
     72
     128 256
     myonmyon
     ```
 
-    2.out ( 作成します )
+    2.out
     ```
     456 myonmyon
     ```
 
-5. 以下コマンドでテストが走ります。
+5. [追加予定]以下コマンドでテストが走ります。
 
     ```
     $npm run test welcome-to-atcoder
@@ -121,12 +114,13 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 ## 環境構築
 
 | name | version | description |
+| --- | --- | --- |
 | OS | Ubuntu 20.04.2 LTS | 動作確認したOSです, macOS確認中 |
 | docker | version | TODO: versionかくにんする, macOSだとdocker起動してないとエラー |
 | node | 未確認 | インストールしてね。 TODO: .nvmrc作る |
 
 ## 注意
- - 解答ファイルについて、取り扱いはそれぞれのコンテスト規約に準拠してください。githubでpublicなリポートリポジトリにpushする場合、それがmainブランチでなくても誰でも見れる状態になります。AtCoderなどは公開可能時間前に回答コードを公開するのは規約違反となります。お気をつけて!
+ - 解答コードの公開に制限があるコンテストは多いです。そもそも公開不可であったり、一定期間後でないと公開不可だったりします。解答ファイルの取り扱いはそれぞれのコンテスト規約に準拠してください。例えばAtCoderの規約では公開可能時間前の解答コード公開は規約違反になります。意図せずともpublicなリポートリポジトリにpushすると、それがmainブランチでなくても誰でも閲覧可能な状態になります。後悔することがないよう、十分注意してください。
 
 ## 参考
 
@@ -136,4 +130,4 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 
 ## License
 
-MIT License // TODO: MIT Licenseにする
+[MIT License](LICENSE)
