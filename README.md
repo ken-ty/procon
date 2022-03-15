@@ -130,4 +130,4 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 
 ## License
 
-MIT License // TODO: MIT Licenseにする
+[MIT License](LICENSE)
