@@ -1,15 +1,16 @@
 {
   "name": "procon",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "procon は プログラミングコンテストの解答環境です。",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "init": "TODO: chmod など必要ならここでやる。",
     "create": "./src/create.sh -f",
-    "start": "./src/run.sh -f ${npm_config_name}",
-    "test": "echo username is ${npm_config_file}"
+    "start": "./src/run.sh -f",
+    "test": "TODO: test コマンド実装する。単純に比較すれば良さげ"
   },
   "repository": {
     "type": "git",

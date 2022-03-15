@@ -13,7 +13,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 1. 解答環境を作成します。以下のコマンドを打ちます。
 
     ```
-    $procon init welcome-to-atcoder    # procon init ${解答する問題の名前} のようにする
+    $npm run create welcome-to-atcoder    # npm run create ${解答する問題の名前} のようにする
     ```
 
     すると、解答環境が作成されます。作成されたディレクトリの構成を確認します。
@@ -57,7 +57,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 1. 試しに解答ファイルを実行してみましょう！以下コマンドで実行できます。
 
     ```
-    $procon run welcome-to-atcoder
+    $npm run start welcome-to-atcoder/welcome-to-atcoder.py
     ```
 
     実行するとコンテナが起動し、 コンテナ内で welcome-to-atcoder.py が実行されます。入力待ちになっています。いかをターミナルに貼りましょう。
@@ -71,7 +71,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 
     結果:
     ```
-    $procon run welcome-to-atcoder
+    $npm run start welcome-to-atcoder/welcome-to-atcoder.py
     1
     2 3
     test
@@ -112,7 +112,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 5. 以下コマンドでテストが走ります。
 
     ```
-    $procon test welcome-to-atcoder
+    $npm run test welcome-to-atcoder
     1.in / 1.out ... OK
     2.in / 2.out ... OK
     2 / 2 case OK, complete!!
@@ -121,8 +121,9 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 ## 環境構築
 
 | name | version | description |
-| OS | Ubuntu 20.04.2 LTS | 動作確認したOSです |
-| docker | version | TODO: versionかくにんする |
+| OS | Ubuntu 20.04.2 LTS | 動作確認したOSです, macOS確認中 |
+| docker | version | TODO: versionかくにんする, macOSだとdocker起動してないとエラー |
+| node | 未確認 | インストールしてね。 TODO: .nvmrc作る |
 
 ## 注意
  - 解答ファイルについて、取り扱いはそれぞれのコンテスト規約に準拠してください。githubでpublicなリポートリポジトリにpushする場合、それがmainブランチでなくても誰でも見れる状態になります。AtCoderなどは公開可能時間前に回答コードを公開するのは規約違反となります。お気をつけて!
