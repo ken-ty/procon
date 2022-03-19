@@ -16,7 +16,7 @@ RED="${ESC}[31m%s${ESC}[m"
 GREEN="${ESC}[32m%s${ESC}[m"
 
 
-# TODO: テストする為のファイルを検出する関数を作る。
+# TODO: ファイルのペアは探索で見つけて勝手に渡せるようにしたい。
 # 例えば、working_directory_name/test 配下の対になるテストケースを取得する。
 function searchTestCase() {
     echo "作成中"
@@ -39,11 +39,11 @@ function isSame() {
 
 # 全てのテストに合格するか判定します。経過を標準出力します。
 # 引数は任意の偶数個与えられます。奇数個ならエラーで停止します。
-# 前方から2ファイルずつ比較します。FROMFILE TOFILE をセットで与えて下さい。
-# @param {string} FROMFILE - 比較ファイル1
-# @param {string} TOFILE - 比較ファイル2
-# @param {string} FROMFILE - 比較ファイル3
-# @param {string} TOFILE - 比較ファイル4
+# 前方から2ファイルずつ比較します。OUTPUTFILE ANSWERFILE をセットで与えて下さい。
+# @param {string} OUTPUTFILE - 回答ファイル1
+# @param {string} ANSWERFILE - 正解ファイル1
+# @param {string} OUTPUTFILE - 回答ファイル2
+# @param {string} ANSWERFILE - 正解ファイル2
 # ...
 # @return {bool} - テスト合格なら1, 不合格なら0を返す。
 function isAllTestPassed() {
