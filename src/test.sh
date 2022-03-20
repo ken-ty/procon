@@ -78,6 +78,7 @@ function isAllTestPassed() {
 # WORKING_DIRECTORY 配下のスクリプトを実行し、全てのテストに合格するか判定します。経過を標準出力します。
 # @param {string} WORKING_DIRECTORY - テスト対象ディレクトリ
 # @return {int} 正常終了なら0、そうでなければ1を返す。テストが通らなくてもエラーないなら正常終了なので0を返す。
+# TODO: ファイルパスが間違っていたりテストケースがないとき、MISSにカウントでなくエラーログだして止めたい
 WORKING_DIRECTORY=$1
 cd $WORKING_DIRECTORY
 
