@@ -49,7 +49,8 @@ function langName2LangExt() {
 # @param {int} TEST_NUM - 作成するテストファイル数
 # @param {string} WORK_NAME - 作業名
 function makeWorkDirectories() {
-  select_lang_ext=`langName2LangExt $1`
+  select_lang_name=$1
+  select_lang_ext=`langName2LangExt $select_lang_name`
   test_num=$2
   work_name=`normalizeWorkName $3`
 
@@ -64,6 +65,7 @@ function makeWorkDirectories() {
     touch "${DEFAULT_INPUT_DIR}/${i}.in"
     touch "${DEFAULT_EXPECT_DIR}/${i}.out"
   done
+  echo "${work_name}を${select_lang_name}でセットアップしました。"
   return 0
 }
 

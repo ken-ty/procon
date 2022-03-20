@@ -48,5 +48,3 @@ EOF
 cat << EOF > 2.out
 456 myonmyon
 EOF
-
-echo "${work_name}をセットアップしました。"
