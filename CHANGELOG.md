@@ -13,6 +13,7 @@
 - サンプルが`sample.py`→`npm run sample-setup` に変更
 - 回答環境構築コマンドを`npm run create`→`npm run template`に変更
 - READMEを更新
+- ライセンスが `no lisence`→`MIT lisence` に変更
 ### Added
 - 楽にテスト実行できる`npm run test WORK_NAME`を追加
 - テンプレート作成時に利用言語とテストファイル数の選択を追加
@@ -35,6 +36,7 @@
 ### Added
 - procon: python3 スクリプトをコンテナで実行する `run.sh` を追加
 
-[Unreleased]: https://github.com/ken-ty/procon/compare/v0.0.3...HEAD?w=1
+[Unreleased]: https://github.com/ken-ty/procon/compare/v0.1.0...HEAD?w=1
+[0.1.0]: https://github.com/ken-ty/procon/compare/v0.0.3...v0.1.0?w=1
 [0.0.3]: https://github.com/ken-ty/procon/compare/v0.0.2...v0.0.3?w=1
 [0.0.2]: https://github.com/ken-ty/procon/compare/v0.0.1...v0.0.2?w=1
