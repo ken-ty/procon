@@ -1,11 +1,14 @@
 #!/bin/bash
 #
 ################################################################################
-# test.sh は スクリプトの実行結果がテストケースにパスするか判別します。
+# test.sh は WORKING_DIRECTORY 配下のスクリプトを実行し、全テストケースに合格するか判定します。
+#
+# Usage: test.sh WORKING_DIRECTORY
 #
 ################################################################################
 # Version:
 #   0.0.1 初期バージョン作成
+#   0.0.2 WORKING_DIRECTORY配下の探索を追加
 ################################################################################
 
 # printfで出力される文字に色を付与するフォーマットを定義します。
@@ -14,15 +17,6 @@
 ESC=$(printf '\033') # \e や \x1b または $'\e' は使用しない
 RED="${ESC}[31m%s${ESC}[m"
 GREEN="${ESC}[32m%s${ESC}[m"
-
-
-# TODO: ファイルのペアは探索で見つけて勝手に渡せるようにしたい。
-# 例えば、working_directory_name/test 配下の対になるテストケースを取得する。
-function searchTestCase() {
-    echo "作成中"
-    # test_case_list=[];
-    # return test_case_list;
-}
 
 # FROMFILE と TOFILE が同一か判定します。
 # @param {string} FROMFILE - 比較ファイル1
@@ -79,5 +73,26 @@ function isAllTestPassed() {
     fi
 }
 
-# ここから実際の処理
-isAllTestPassed $@;
+################################################################################
+
+# WORKING_DIRECTORY 配下のスクリプトを実行し、全てのテストに合格するか判定します。経過を標準出力します。
+# @param {string} WORKING_DIRECTORY - テスト対象ディレクトリ
+# @return {int} 正常終了なら0、そうでなければ1を返す。テストが通らなくてもエラーないなら正常終了なので0を返す。
+# TODO: ファイルパスが間違っていたりテストケースがないとき、MISSにカウントでなくエラーログだして止めたい
+WORKING_DIRECTORY=$1
+cd $WORKING_DIRECTORY
+
+mkdir -p stdout
+TestPairList=""
+input_files=`ls stdin | grep .in$`
+
+for input_file in $input_files
+do
+    input_file_stem=`basename $input_file .in`
+    output_file=$input_file_stem.out
+    python3 $WORKING_DIRECTORY.py < stdin/$input_file > stdout/$output_file
+    TestPairList+="expect/$output_file stdout/$output_file "
+done
+
+isAllTestPassed $TestPairList;
+exit 0;
