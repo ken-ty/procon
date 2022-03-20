@@ -45,15 +45,13 @@ function langName2LangExt() {
 }
 
 # 作業ファイル群を作成します。
-# @param {string} WORK_NAME - 作業名
 # @param {string} SELECT_LANG - 利用言語 python | php
 # @param {int} TEST_NUM - 作成するテストファイル数
+# @param {string} WORK_NAME - 作業名
 function makeWorkDirectories() {
-  work_name=$1
-  work_name=`normalizeWorkName $work_name`
-  select_lang=$2
-  select_lang_ext=`langName2LangExt $select_lang`
-  test_num=$3
+  select_lang_ext=`langName2LangExt $1`
+  test_num=$2
+  work_name=`normalizeWorkName $3`
 
   mkdir -p $work_name
   cd $work_name
@@ -73,8 +71,8 @@ function makeWorkDirectories() {
 
 # create.sh は 解答環境を作成します。
 # 作業ファイル群を作成します。
-# @param {string} WORK_NAME - 作業名
 # @param {string} SELECT_LANG - 利用言語 python | php
 # @param {int} TEST_NUM - 作成するテストファイル数
+# @param {string} WORK_NAME - 作業名
 # @return {int} - 正常終了なら0, そうでないなら1を返します。
-makeWorkDirectories $1 python 3
+makeWorkDirectories $1 $2 $3
