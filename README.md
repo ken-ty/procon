@@ -2,18 +2,25 @@
 
 procon は プログラミングコンテストの解答環境です。
 
-* **クリーン:** ローカル端末を汚しません。
-* **[追加予定]自動テスト:** 入出力を比較し、異なるなら差分を比較できます。
+
+* **ロケットスタート:** コマンド一つで回答テンプレートを作成します。
+* **楽楽テスト:** 回答スクリプトのテストがコマンド１つで実行できます。
+<!-- * **[追加予定]クリーンな実行:** ローカル端末を汚しません。TODO: 一旦pythonスクリプトをローカルで直接実行して、上記2項目を満たす。 --> 
+
+# 主なコマンド
+
+- `npm run template WORKNAME` 回答テンプレートを作成します。デフォルトはpythonテンプレートです。
+- `npm run test WORKNAME` WORKNAMEのスクリプトをテストします。
 
 ## Installation
 
 [AtCoder](https://atcoder.jp/home) から問題をお借りして、使い方を見てみましょう。
 python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https://atcoder.jp/contests/abs/tasks/practice_1?lang=ja) を解答してみます。
 
-1. 解答環境を作成します。以下のコマンドを打ちます。
+1. 解答環境を作成します。以下のコマンドを打ちます。引数には回答する問題の名前を付けると良いでしょう。今回は`welcome-to-atcoder`とします。
 
     ```
-    $npm run create welcome-to-atcoder    # npm run create ${解答する問題の名前} のようにする
+    $npm run template welcome-to-atcoder
     ```
 
     すると、解答環境が作成されます。作成されたディレクトリの構成を確認します。
@@ -21,17 +28,19 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     ```
     $tree welcome-to-atcoder/
     welcome-to-atcoder/
-    ├── test
-    │   ├── 1.in                 # このファイルに入力をコピペする
-    │   ├── 1.out                # このファイルに期待する出力をコピペする
+    ├── stdin
+    │   ├── 1.in                 # このファイルに確認したい入力をコピペする
     │   ├── 2.in
+    │   └── 3.in
+    ├── expect
+    │   ├── 1.out                # このファイルに期待する出力をコピペする
     │   ├── 2.out
-    │   ├── 3.in
     │   └── 3.out
+    ├── stdout                    # この配下に標準出力の結果ファイルが格納される
     └── welcome-to-atcoder.py     # このファイルに解答する
     ```
 
-1. 解答しましょう！  welcome-to-atcoder/welcome-to-atcoder.py を好きなエディターで開いて下さい。解答スクリプトを記述します。
+1. welcome-to-atcoder/welcome-to-atcoder.py に 解答スクリプトを記述します。
 
     ```
     # -*- coding: utf-8 -*-
@@ -45,38 +54,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     print("{} {}".format(a+b+c, s))
     ```
 
-1. 試しに解答ファイルを実行してみましょう！以下コマンドで実行できます。
-
-    ```
-    $npm run start welcome-to-atcoder/welcome-to-atcoder.py
-    ```
-
-    実行するとコンテナが起動し、 コンテナ内で welcome-to-atcoder.py が実行されます。入力待ちになっています。以下をターミナルに貼りましょう。
-
-    貼る内容:
-    ```
-    1
-    2 3
-    test
-    ```
-
-    結果:
-    ```
-    $npm run start welcome-to-atcoder/welcome-to-atcoder.py
-
-    > procon@0.0.3 start
-    > ./src/run.sh -f "welcome-to-atcoder/welcome-to-atcoder.py"
-
-    1
-    2 3
-    test
-    6 test
-    ```
-
-    うまくいったようです！実行終了したコンテナは既に破棄されているので、環境はクリーンな状態を保っています。
-
-4. [追加予定]testを自動化しましょう！ 入力ファイル( 1.in, 2.in ), 出力ファイル( 1.out, 2.out )を準備します。3.in, 3.out は今回使いませんので、消してください。
-    // TODO: 入出力ファイルの命名規則を書く。
+1. 確認したい標準入力を試す代わりに、stdin配下にファイルを作成して記述します。また、期待する出力をexpect配下に**入力ファイルと同名の**ファイルを作成します。ただし、拡張子は異なって構いません。
 
     1.in
     ```
@@ -102,7 +80,9 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     456 myonmyon
     ```
 
-5. [追加予定]以下コマンドでテストが走ります。
+    今回は3.in, 3.outは使わないので削除しました。
+
+1. [追加予定]以下コマンドでテストが走ります。
 
     ```
     $npm run test welcome-to-atcoder

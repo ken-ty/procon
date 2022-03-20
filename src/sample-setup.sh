@@ -8,7 +8,7 @@
 #   0.0.1 初期バージョン作成
 ################################################################################
 
-npm run create welcome-to-atcoder
+npm run template welcome-to-atcoder
 
 cd welcome-to-atcoder
 cat << EOF > welcome-to-atcoder.py
@@ -23,24 +23,27 @@ s = input()
 print("{} {}".format(a+b+c, s))
 EOF
 
-cd test
+cd stdin
 cat << EOF > 1.in
 1
 2 3
 test
-EOF
-cat << EOF > 1.out
-6 test
 EOF
 cat << EOF > 2.in
 72
 128 256
 myonmyon
 EOF
+
+cd ../expect
+cat << EOF > 1.out
+6 test
+EOF
 cat << EOF > 2.out
 456 myonmyon
 EOF
 
-rm 3.in 3.out
+cd ..
+rm stdin/3.in expect/3.out
 
 echo "welcom-to-atcoderをセットアップしました。"

@@ -49,14 +49,14 @@ function make_work_directories {
   use_work_name $1
   mkdir ${USE_WORK_NAME}
   touch ${USE_WORK_NAME}/${USE_WORK_NAME}.py
-  mkdir ${USE_WORK_NAME}/test
-  touch ${USE_WORK_NAME}/${USE_WORK_NAME}.py
-  touch ${USE_WORK_NAME}/test/1.in
-  touch ${USE_WORK_NAME}/test/1.out
-  touch ${USE_WORK_NAME}/test/2.in
-  touch ${USE_WORK_NAME}/test/2.out
-  touch ${USE_WORK_NAME}/test/3.in
-  touch ${USE_WORK_NAME}/test/3.out
+  mkdir ${USE_WORK_NAME}/stdin
+  touch ${USE_WORK_NAME}/stdin/1.in
+  touch ${USE_WORK_NAME}/stdin/2.in
+  touch ${USE_WORK_NAME}/stdin/3.in
+  mkdir ${USE_WORK_NAME}/expect
+  touch ${USE_WORK_NAME}/expect/1.out
+  touch ${USE_WORK_NAME}/expect/2.out
+  touch ${USE_WORK_NAME}/expect/3.out
   return 0
 }
 
