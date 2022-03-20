@@ -8,7 +8,7 @@
   },
   "scripts": {
     "init": "TODO: chmod など必要ならここでやる。",
-    "template:py": "./src/create.sh -f",
+    "template:py": "./src/create.sh",
     "template": "npm run template:py",
     "start": "./src/run.sh -f",
     "test": "./src/test.sh",

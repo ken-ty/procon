@@ -1,72 +1,44 @@
 #!/bin/bash
-#
-################################################################################
-# create.sh は 解答環境を作成します。
-#
-# Usage: ./create.sh -f work_name
-# Usage: ./create.sh [option]
-#
-# Options:
-#   -f 指定した作業名の解答環境を作成
-#   -h ヘルプを表示
-#   -v バージョンを表示
-################################################################################
-# Version:
-#   0.0.1 初期バージョン作成
-################################################################################
 
+DEFAULT_WORK_NAME="procon"
 
-# usage() 使い方を表示する
-function usage() {
-  # usageはヘッダコメントから取得する.
-  pattern='NR >= 4'
-  action='{if (/^#/) { if (/^##########/) { exit } else {sub("^# ?", ""); print }} else { exit }}'
-  awk "$pattern $action" $0
-  return 0
-}
-
-# version() バージョンを表示する
-function version() {
-  pattern=''
-  action='{if (/^# Version:/) { getline; sub("^#   ?", ""); print } }'
-  awk "$pattern $action" $0
-  return 0
-}
-
-# use_work_name() 作業名を決める
-DEFAULT_WORK_NAME="procon_1" # nをカウントアップする.
-USE_WORK_NAME=${DEFAULT_WORK_NAME}
-function use_work_name() {
-  if [ -z "$1" ]; then
-    return 0 # 空ならDEFAULT_WORK_NAMEが反映される (エラーじゃない)
+# 作業名を正規化します。
+# WORK_NAMEが無効な値ならDEFAULT_WORK_NAMEを使います。
+# 同一の名前が作業ディレクトリがあるならsuffixを付けます。
+# @param {string} WORK_NAME - 作業名
+# @return {string} - 正規化した作業名を返します。
+function useWorkName() {
+  work_name=$1
+  # デフォルト作業名を使うかどうか
+  if [ -z "$work_name" ]; then
+    work_name="$DEFAULT_WORK_NAME"
   fi
-  USE_WORK_NAME=$1
+  # suffixを付けるかどうか
+  sameNameCount=`ls -l | grep $work_name | wc -l`
+  if [ $sameNameCount -gt 0 ]; then
+    work_name="${work_name}_`expr $sameNameCount + 1`"
+  fi
+  echo "$work_name"
+}
+
+# makeWorkDirectories 作業ファイル群を作成する TODO: py以外にも対応する
+function makeWorkDirectories {
+  USE_WORK_NAME=`useWorkName $1`
+  mkdir -p ${USE_WORK_NAME}
+  cd $USE_WORK_NAME
+  touch ${USE_WORK_NAME}.py
+  mkdir -p stdin
+  touch stdin/1.in
+  touch stdin/2.in
+  touch stdin/3.in
+  mkdir -p expect
+  touch expect/1.out
+  touch expect/2.out
+  touch expect/3.out
   return 0
 }
 
-# make_work_directories 作業ファイル群を作成する TODO: py以外にも対応する
-function make_work_directories {
-  use_work_name $1
-  mkdir ${USE_WORK_NAME}
-  touch ${USE_WORK_NAME}/${USE_WORK_NAME}.py
-  mkdir ${USE_WORK_NAME}/stdin
-  touch ${USE_WORK_NAME}/stdin/1.in
-  touch ${USE_WORK_NAME}/stdin/2.in
-  touch ${USE_WORK_NAME}/stdin/3.in
-  mkdir ${USE_WORK_NAME}/expect
-  touch ${USE_WORK_NAME}/expect/1.out
-  touch ${USE_WORK_NAME}/expect/2.out
-  touch ${USE_WORK_NAME}/expect/3.out
-  return 0
-}
+################################################################################
 
-readonly ALLOW_OPTIONS=":cf:hu:v" # 先頭の:でOPTARGを任意にした
-while getopts $ALLOW_OPTIONS option; do
-  case $option in
-    :  ) make_work_directories         ;; # 解答環境を作成
-    f  ) make_work_directories $OPTARG ;; # 引数で指定した名前の解答環境を作成
-    v  ) version                       ;; # バージョンを出力
-    h  ) usage                         ;; # ヘルプを出力
-    \? ) usage >&2                     ;; # 上記以外のオプションの場合、標準エラーでヘルプを出力
-  esac
-done
+# create.sh は 解答環境を作成します。
+makeWorkDirectories $1
