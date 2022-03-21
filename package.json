@@ -1,7 +1,7 @@
 {
   "name": "procon",
   "version": "0.1.0",
-  "description": "procon は プログラミングコンテストの解答環境です。",
+  "description": "procon は プログラミングコンテストの解答環境です。TOPSIC や AtCoder でプログラミング問題を解答する時に使用します。",
   "main": "index.js",
   "directories": {
     "test": "test"
