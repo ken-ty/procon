@@ -7,11 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "init": "TODO: chmod など必要ならここでやる。",
     "template:python": "./src/create.sh python",
     "template:php": "./src/create.sh php",
     "template": "npm run template:python 3",
-    "start": "./src/run.sh -f FIXME: 一旦凍結。コンテナ化は後回し",
     "test": "./src/test.sh",
     "sample-setup": "./src/sample-setup.sh"
   },
