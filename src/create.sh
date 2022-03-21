@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# create.sh は 解答環境を作成します。
+# 作業ファイル群を作成します。
+# @param {string} SELECT_LANG - 利用言語 python | php
+# @param {int} TEST_NUM - 作成するテストファイル数
+# @param {string} WORK_NAME - 作業名
+# @return {int} - 正常終了なら0, そうでないなら1を返します。
+function main() {
+  makeWorkDirectories $1 $2 $3
+}
+
+# 定数宣言
 DEFAULT_WORK_NAME="procon"
 DEFAULT_INPUT_DIR="stdin"
 DEFAULT_EXPECT_DIR="expect"
@@ -69,12 +80,5 @@ function makeWorkDirectories() {
   return 0
 }
 
-################################################################################
-
-# create.sh は 解答環境を作成します。
-# 作業ファイル群を作成します。
-# @param {string} SELECT_LANG - 利用言語 python | php
-# @param {int} TEST_NUM - 作成するテストファイル数
-# @param {string} WORK_NAME - 作業名
-# @return {int} - 正常終了なら0, そうでないなら1を返します。
-makeWorkDirectories $1 $2 $3
+# 実行
+main $1 $2 $3

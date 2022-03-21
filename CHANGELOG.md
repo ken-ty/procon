@@ -5,9 +5,12 @@
 このプロジェクトは [Semantic Versioning](http://semver.org/) に準拠していません。
 
 ## [Unreleased]
+### Changed
 ### Added
 - なし
-
+### Deleted
+- `npm run init` を削除
+- `npm run start` を削除
 ## [0.1.0] - 2022-03-21
 ### Changed
 - サンプルが`sample.py`→`npm run sample-setup` に変更
