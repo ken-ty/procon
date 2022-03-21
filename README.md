@@ -21,6 +21,9 @@ procon は プログラミングコンテストの解答環境です。TOPSIC �
 [AtCoder](https://atcoder.jp/home) から問題をお借りして、使い方を見てみましょう。
 python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https://atcoder.jp/contests/abs/tasks/practice_1?lang=ja) を解答してみます。
 
+![procon-demo](https://user-images.githubusercontent.com/38717219/159227464-759e9fcd-68bc-48e2-bd57-080037548d81.gif)
+※デモ動画ではターミナルを利用していますが、普段使っているエディタを使うことで快適に試せます。VSCodeやAtomなど。
+
 1. `template`コマンドで解答テンプレートを作成します。`WORKNAME`引数には問題名を使うのが良いでしょう。今回は`welcome-to-atcoder`とします。
 
     ```
