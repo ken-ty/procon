@@ -7,7 +7,7 @@ PROCedure ON how to easy procon!
 
 ## proconとは
 
-procon は プログラミングコンテストの解答環境です。TOPSIC や AtCoder でプログラミング問題を解答する時に使用します。
+procon は プログラミングコンテストの解答環境です。TOPSIC や AtCoder でプログラミング問題を解答する時に使用します。現在は[αリース](https://github.com/ken-ty/procon/releases/latest)です。
 
 * **ロケットスタート:** コマンド一つで解答テンプレートを作成します。:rocket:
 * **楽楽テスト:** コマンド１つで解答スクリプトのテストを実行できます。:laughing:
@@ -31,7 +31,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 ![procon-demo](https://user-images.githubusercontent.com/38717219/159227464-759e9fcd-68bc-48e2-bd57-080037548d81.gif)
 ※デモ動画ではターミナルを利用していますが、普段使っているエディタを使うことで快適に試せます。VSCodeやAtomなど。
 
-1. `template`コマンドで解答テンプレートを作成します。`WORKNAME`引数には問題名を使うのが良いでしょう。今回は`welcome-to-atcoder`とします。
+1. `template`コマンドで解答テンプレートを作成します。`WORKNAME`引数には問題名を使うのが良いでしょう。今回は`welcome-to-atcoder`とします。下記コマンドで解答テンプレートが作成されます。
 
     ```
     $ npm run template welcome-to-atcoder
@@ -46,7 +46,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     welcome-to-atcoderをpythonでセットアップしました。
     ```
 
-    解答テンプレートが作成されました。`welcome-to-atcoder`ディレクトリに移動して構成を確認します。
+    `welcome-to-atcoder`ディレクトリに移動して構成を確認しましょう。`welcome-to-atcoder.py`には解答スクリプトを書き込みます。`stdin`, `expect`配下には入出力ファイルが作成されましたが、今は全て空ファイルです。これらは後述する`test`コマンドで利用します。
 
     ```
     $ cd welcome-to-atcoder
@@ -63,8 +63,6 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     └── welcome-to-atcoder.py
     ```
 
-    `welcome-to-atcoder.py`には解答スクリプトを書き込みます。`stdin`, `expect`配下には入出力ファイルが作成されましたが、今は全て空ファイルです。これらは後述する`test`コマンドで利用します。
-
 1. `welcome-to-atcoder.py`に解答スクリプトを書き込みます。下記コードを書き込んで下さい。
 
     ```
@@ -79,7 +77,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     print("{} {}".format(a+b+c, s))
     ```
 
-    試しにスクリプトを実行してみましょう。`python3 welcome-to-atcoder.py` を実行します。入力待ちになっているはずなので、以下入力します。
+    試しにスクリプトを実行してみましょう。`python3 welcome-to-atcoder.py` を実行します。入力待ちになっているはずなので、問題の入力例1を入力してみます。
 
     ```
     $ python3 welcome-to-atcoder.py
@@ -88,7 +86,7 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
     test
     ```
 
-    すると、スクリプトが結果を出力します。下記出力と同じならここまで問題ないです！
+    すると、スクリプトが実行されます。下記出力が表示されたらここまで問題ないです！
 
     ```
     6 test
@@ -143,21 +141,19 @@ python3 で [AtCoder Beginners Selection PracticeA - Welcome to AtCoder](https:/
 
     全てのテストに合格していることがわかりました！もし期待する出力でない場合はMISSにカウントされます。全てのテストに合格したら、参加しているプロコンのwebページからスクリプトを提出しましょう！
 
-1. 解答し終わったディレクトリはそのまま残しても良いですし、`rm -rf ${WORKNAME}`として削除しても構わないでしょう。これまでのハンズオンを手軽に試したい場合、`sample-setup`コマンドが利用できます。  
-
-基本的な使い方は以上です。プロコンをエンジョイしましょう！
+1. 解答し終わったディレクトリはそのまま残しても良いですし、`rm -rf ${WORKNAME}`として削除しても構わないでしょう。これまでのハンズオンを手軽に試したい場合、`sample-setup`コマンドが利用できます。基本的な使い方は以上です。プロコンをエンジョイしましょう！
 
 ## 動作条件
 
 | name | version | description |
 | --- | --- | --- |
-| OS | どのOSでもよい | 動作確認したOSは以下。Ubuntu 20.04.2 LTS |
-| node | 未確認 | インストールしてね♪ |
-| 利用言語の実行環境| - | 例えばpython3.5, php7.4など |
+| OS | - | 動作確認したOSは以下。Ubuntu 20.04.2 LTS |
+| node | - | なるたけ新しいバージョン |
+| 利用言語の実行環境| - | python3.5, php7.4など |
 <!-- | docker | version | TODO: versionかくにんする, macOSだとdocker起動してないとエラー | -->
 
 ## 注意
- - 解答コードの公開に制限があるコンテストは多いです。そもそも公開不可であったり、一定期間後でないと公開不可だったりします。解答ファイルの取り扱いはそれぞれのコンテスト規約に準拠してください。例えばAtCoderの規約では公開可能時間前の解答コード公開は規約違反になります。意図せずともpublicなリポートリポジトリにpushすると、それがmainブランチでなくても誰でも閲覧可能な状態になります。後悔することがないよう、十分注意してください。
+解答コードの公開に制限があるコンテストは多いです。そもそも公開不可であったり、一定期間後でないと公開不可だったりします。解答ファイルの取り扱いはそれぞれのコンテスト規約に準拠してください。例えばAtCoderの規約では公開可能時間前の解答コード公開は規約違反になります。意図せずともpublicなリポートリポジトリにpushすると、それがmainブランチでなくても誰でも閲覧可能な状態になります。後悔することがないよう、十分注意してください。
 
 <!-- ## 貢献 -->
 
