@@ -1,9 +1,11 @@
 # procon
 
 PROCedure ON how to easy procon!
-簡単にプロコンする方法の手順！
 
-![procon](https://user-images.githubusercontent.com/38717219/159499951-c4b4b082-3f3a-431f-a681-ebd581fbf493.png)
+<!-- ![procon](https://user-images.githubusercontent.com/38717219/159499951-c4b4b082-3f3a-431f-a681-ebd581fbf493.png) -->
+![procon](https://user-images.githubusercontent.com/38717219/159506929-6646b4f5-de23-4b59-8b49-07fa5acfdf57.png)
+
+## proconとは
 
 procon は プログラミングコンテストの解答環境です。TOPSIC や AtCoder でプログラミング問題を解答する時に使用します。
 
