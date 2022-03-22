@@ -15,6 +15,9 @@
 
 ## [Unreleased]
 - なし
+## [0.1.2] - 2022-03-22
+### Added
+- ロゴを追加しました！
 ## [0.1.1] - 2022-03-21
 ### Removed
 - `npm run init` を削除
@@ -47,7 +50,8 @@
 ### Added
 - procon: python3 スクリプトをコンテナで実行する `run.sh` を追加
 
-[Unreleased]: https://github.com/ken-ty/procon/compare/v0.1.1...HEAD?w=1
+[Unreleased]: https://github.com/ken-ty/procon/compare/v0.1.2...HEAD?w=1
+[0.1.2]: https://github.com/ken-ty/procon/compare/v0.1.1...v0.1.2?w=1
 [0.1.1]: https://github.com/ken-ty/procon/compare/v0.1.0...v0.1.1?w=1
 [0.1.0]: https://github.com/ken-ty/procon/compare/v0.0.3...v0.1.0?w=1
 [0.0.3]: https://github.com/ken-ty/procon/compare/v0.0.2...v0.0.3?w=1
